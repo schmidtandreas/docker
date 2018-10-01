@@ -8,13 +8,16 @@ ENV TERM xterm-256color
 RUN apt-get update && \
     apt-get install -qqy dialog \
         automake autoconf bc bison bzip2 \
+        build-essential help2man \
         fakeroot file flex gawk gcc g++ \
         gettext git libconfuse-dev make \
+        gperf libtool-bin libexpat-dev \
         libncurses-dev patch pkg-config \
         python-dev python3-dev texinfo \
         wget curl python3 python-setuptools \
-        python3-setuptools xz-utils libmpfr-dev \
-        zip unzip lzop && \
+        python3-setuptools python-serial \
+        python-pip python3-pip xz-utils \
+        libmpfr-dev zip unzip lzop && \
     apt-get clean && \
     apt-get autoremove -y
 
