@@ -1,15 +1,7 @@
 FROM schmidtandreas/ubuntu-dev
 
-LABEL version="0.0.1"
+LABEL version="0.0.2"
 LABEL description="ESP8266 toolchain environment"
-
-RUN apt-get update && \
-    apt-get install -qqy build-essential gperf libtool-bin \
-    python-serial libexpat-dev help2man python-pip python3-pip && \
-    apt-get clean && \
-    apt-get autoremove
-
-RUN rm -rf /var/lib/apt/lists/*
 
 RUN useradd -ms /bin/bash user
 
@@ -64,9 +56,9 @@ RUN pip install esptool
 RUN git clone https://github.com/espressif/ESP8266_NONOS_SDK.git sdk && \
     cd sdk && \
     sed -i "s|\r||" ld/eagle.app.v6.ld && \
-    #sed -i "s|../ld|./ld|" ld/eagle.app.v6.ld && \
     sed -i "s|\r||" ld/eagle.rom.addr.v6.ld
 
 WORKDIR /project
 
+CMD []
 # vim: ts=4 sw=4 et
