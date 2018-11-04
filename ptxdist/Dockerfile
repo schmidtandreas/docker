@@ -21,6 +21,8 @@ RUN git clone git://git.pengutronix.de/ptxdist && \
 
 USER andreas:andreas
 
+ENV TERM=screen-256color
+
 WORKDIR /home/andreas/project
 
 ENTRYPOINT [ "ptxdist" ]
