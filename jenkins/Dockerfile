@@ -12,7 +12,8 @@ RUN apt-get update && \
     curl \
     gnupg \
     software-properties-common \
-    qemu-kvm
+    qemu-kvm \
+    qemu-utils
 
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 
