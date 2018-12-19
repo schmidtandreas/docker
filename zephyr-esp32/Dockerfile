@@ -16,7 +16,7 @@ RUN wget -O /tmp/zephyr_sdk_setup ${ZEPHYR_SDK_URL}/${ZEPHYR_SDK_SETUP} && \
     rm /tmp/zephyr_sdk_setup
 
 # Zephyr
-RUN git clone https://github.com/zephyrproject-rtos/zephyr.git ${ZEPHYR_BASE}
+RUN git clone https://github.com/schmidtandreas/zephyr.git ${ZEPHYR_BASE}
 
 RUN pip3 install --user -r ${ZEPHYR_BASE}/scripts/requirements.txt
 
