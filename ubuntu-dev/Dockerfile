@@ -15,7 +15,8 @@ RUN apt-get update && \
         gawk gcc g++ gettext git gperf \
         help2man \
         libconfuse-dev libtool-bin libexpat-dev \
-        libncurses-dev libmpfr-dev lzop \
+        libncurses-dev libmpfr-dev libxml-parser-perl \
+        lzop \
         make \
         ninja-build \
         patch pkg-config python-dev python3-dev \
