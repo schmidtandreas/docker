@@ -1,9 +1,9 @@
 FROM schmidtandreas/oselas-toolchain:latest
 
-LABEL version="2018.06.0"
+LABEL version="2018.12.0"
 LABEL description="PTXDIST image based on osales-toolchain image"
 
-ARG PTXDIST_VERSION=2018.06.0
+ARG PTXDIST_VERSION=2018.12.0
 
 RUN mkdir /workspace
 
