@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -qqy --no-install-recommends \
         automake autoconf \
         bc bison bzip2 build-essential \
-        cmake curl ccache \
+        cmake curl ccache cpio \
         dialog dfu-util device-tree-compiler \
         fakeroot file flex \
         gawk gcc g++ gettext git gperf \
