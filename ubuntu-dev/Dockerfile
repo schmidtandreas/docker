@@ -23,6 +23,7 @@ RUN apt-get update && \
         python3 python-setuptools python-serial \
         python3-setuptools python-pip python3-pip \
         python3-wheel \
+        sudo \
         texinfo \
         unzip \
         wget \
