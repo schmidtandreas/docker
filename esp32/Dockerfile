@@ -3,25 +3,27 @@ FROM schmidtandreas/ubuntu-dev
 LABEL version="0.0.1"
 LABEL description="ESP32 toolchain environment"
 
-RUN useradd -ms /bin/bash user
+WORKDIR /
+RUN git clone https://github.com/espressif/esp-idf.git
 
-USER root:root
+WORKDIR /esp-idf
+RUN git submodule update --init --recursive
+RUN IDF_TOOLS_PATH=/toolchain ./install.sh
+RUN python -m pip install -r requirements.txt
 
-RUN cd /opt && \
-    wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz && \
-    tar xzf xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz && \
-    rm -rf xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz
+RUN rm -rf /bin/sh && \
+    ln -s /bin/bash /bin/sh
 
-ENV PATH=$PATH:/opt/xtensa-esp32-elf/bin
+# create user
+RUN useradd -G uucp,dialout -ms /bin/bash -p "$(openssl passwd -1 user)" user
+RUN chown -R user:user /esp-idf
+RUN sed -i "s|^sudo\(.*\)$|sudo\1user|" /etc/group
+USER user:user
 
-RUN pip install esptool
+ENV IDF_TOOLS_PATH=/toolchain
+ENV IDF_CCACHE_ENABLE=true
 
-RUN git clone --recursive https://github.com/espressif/esp-idf.git esp && \
-    chown -R user:user /esp
-
-RUN pip install -r /esp/requirements.txt
-
-ENV IDF_PATH=/esp
+ENV TERM=screen-256color
 ENV PWD=/project
 
 WORKDIR /project
